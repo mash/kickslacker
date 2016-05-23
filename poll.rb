@@ -1,3 +1,4 @@
+# coding: utf-8
 require 'open-uri'
 require "net/http"
 require "uri"
@@ -17,8 +18,7 @@ cache = Dalli::Client.new
 
 doc = Nokogiri::HTML(open(ENV['KICKSTARTER_URL']))
 
-title = doc.css('.title h2 a').first.content
-
+title = doc.css('main h2 a').first.content
 backers = doc.css('#backers_count').first['data-backers-count'].to_i
 pledged = doc.css('#pledged data').first.content
 target = doc.css('#pledged~span.money').first.content
