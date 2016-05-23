@@ -21,7 +21,7 @@ doc = Nokogiri::HTML(open(ENV['KICKSTARTER_URL']))
 title = doc.css('main h2 a').first.content
 backers = doc.css('#backers_count').first['data-backers-count'].to_i
 pledged = doc.css('#pledged data').first.content
-target = doc.css('#pledged~span.money').first.content
+target = doc.css('#pledged~span span.money').first.content
 
 pledged_i = pledged.gsub(/,|\$|£/, '').to_i
 target_i = target.gsub(/,|\$|£/, '').to_i
