@@ -48,7 +48,7 @@ if backers > 0
             },
             {
               title: '%',
-              value: pledged.gsub(/[$,]/,'').to_i / target.gsub(/[$,]/,'').to_i * 100,
+              value: pledged.gsub(/[$,]/,'').to_i * 100 / target.gsub(/[$,]/,'').to_i,
               short: true
             },
             {
