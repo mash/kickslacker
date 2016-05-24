@@ -32,7 +32,7 @@ if backers > 0
   if old_count < backers
 
     payload= {
-      text: "New Backers on <#{ENV['KICKSTARTER_URL']}|#{title}>",
+      text: "#{backers}th backer on <#{ENV['KICKSTARTER_URL']}|#{title}>",
       icon_url: "https://www.kickstarter.com/download/kickstarter-logo-k-color.png",
       channel: ENV['SLACK_ROOM'],
       username: 'Kickstarter',
@@ -44,6 +44,11 @@ if backers > 0
             {
               title: 'Backers',
               value: backers,
+              short: true
+            },
+            {
+              title: '%',
+              value: pledged.gsub(/[$,]/,'').to_i / target.gsub(/[$,]/,'').to_i * 100,
               short: true
             },
             {
