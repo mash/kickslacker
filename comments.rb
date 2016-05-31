@@ -29,7 +29,7 @@ comments.each do |comment|
     payload= {
       text: "<https://www.kickstarter.com#{link}|#{author} commented>\n#{text}",
       icon_url: "https://www.kickstarter.com/download/kickstarter-logo-k-color.png",
-      channel: ENV['SLACK_ROOM'],
+      channel: ENV['SLACK_COMMENTS_ROOM'],
       username: 'Kickstarter',
     }
     Net::HTTP.post_form(URI.parse(ENV['SLACK_URL']), {payload: JSON.dump(payload)})
